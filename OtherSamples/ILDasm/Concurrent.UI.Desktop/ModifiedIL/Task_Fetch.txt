@@ -1,0 +1,24 @@
+.method private hidebysig instance void  FetchWithTaskButton_Click(object sender,
+                                                                   class [PresentationCore]RoutedEventArgs e) cil managed
+{
+  .custom instance void NullableContextAttribute::.ctor(uint8) = ( 01 00 01 00 00 ) 
+  // Code size       45 (0x2d)
+  .maxstack  3
+  .locals init (Task`1<List`1<Person>> V_0)
+  IL_0000:  nop
+  IL_0001:  ldarg.0
+  IL_0002:  call       instance void MainWindow::ClearListBox()
+  IL_0007:  nop
+  IL_0008:  ldarg.0
+  IL_0009:  ldfld      PersonReader MainWindow::reader
+  IL_000e:  callvirt   instance Task`1<List`1<Person>> PersonReader::GetPeopleAsync()
+  IL_0013:  stloc.0
+  IL_0014:  ldloc.0
+  IL_0015:  ldarg.0
+  IL_0016:  ldftn      instance void MainWindow::PopulateListBox(Task`1<List`1<Person>>)
+  IL_001c:  newobj     instance void Action`1<Task`1<List`1<Person>>>::.ctor(object, native int)
+  IL_0021:  call       TaskScheduler TaskScheduler::FromCurrentSynchronizationContext()
+  IL_0026:  callvirt   instance Task Task`1<List`1<Person>>::ContinueWith(Action`1<Task`1<!0>>,  TaskScheduler)
+  IL_002b:  pop
+  IL_002c:  ret
+} // end of method MainWindow::FetchWithTaskButton_Click

@@ -1,0 +1,18 @@
+.method private hidebysig instance void  PopulateListBox(Task`1<List`1<Person>> task) cil managed
+{
+  .custom instance void NullableContextAttribute::.ctor(uint8) = ( 01 00 01 00 00 ) 
+  // Code size       22 (0x16)
+  .maxstack  2
+  .locals init (List`1<Person> V_0)
+  IL_0000:  nop
+  IL_0001:  ldarg.1
+  IL_0002:  callvirt   instance !0 Task`1<List`1<Person>>::get_Result()
+  IL_0007:  stloc.0
+  IL_0008:  ldarg.0
+  IL_0009:  ldfld      ListBox MainWindow::PersonListBox
+  IL_000e:  ldloc.0
+  IL_000f:  callvirt   instance void ItemsControl::set_ItemsSource(class IEnumerable)
+  IL_0014:  nop
+  IL_0015:  ret
+} // end of method MainWindow::PopulateListBox
+

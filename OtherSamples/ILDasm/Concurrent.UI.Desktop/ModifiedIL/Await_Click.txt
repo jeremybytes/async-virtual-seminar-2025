@@ -1,0 +1,31 @@
+.method private hidebysig instance void  FetchWithAwaitButton_Click(object sender, class RoutedEventArgs e) cil managed
+{
+  .custom instance void NullableContextAttribute::.ctor(uint8) = ( 01 00 01 00 00 ) 
+  .custom instance void AsyncStateMachineAttribute::.ctor(Type) = ..9Concurrent.UI.MainWindow+<FetchWithAwaitButton_Click>d__5..
+  .custom instance void DebuggerStepThroughAttribute::.ctor() = ( 01 00 00 00 ) 
+  // Code size       59 (0x3b)
+  .maxstack  2
+  .locals init (class MainWindow/'<FetchWithAwaitButton_Click>d__5' V_0)
+  IL_0000:  newobj     instance void MainWindow/'<FetchWithAwaitButton_Click>d__5'::.ctor()
+  IL_0005:  stloc.0
+  IL_0006:  ldloc.0
+  IL_0007:  call       valuetype AsyncVoidMethodBuilder AsyncVoidMethodBuilder::Create()
+  IL_000c:  stfld      valuetype AsyncVoidMethodBuilder MainWindow/'<FetchWithAwaitButton_Click>d__5'::'<>t__builder'
+  IL_0011:  ldloc.0
+  IL_0012:  ldarg.0
+  IL_0013:  stfld      MainWindow MainWindow/'<FetchWithAwaitButton_Click>d__5'::'<>4__this'
+  IL_0018:  ldloc.0
+  IL_0019:  ldarg.1
+  IL_001a:  stfld      object MainWindow/'<FetchWithAwaitButton_Click>d__5'::sender
+  IL_001f:  ldloc.0
+  IL_0020:  ldarg.2
+  IL_0021:  stfld      RoutedEventArgs MainWindow/'<FetchWithAwaitButton_Click>d__5'::e
+  IL_0026:  ldloc.0
+  IL_0027:  ldc.i4.m1
+  IL_0028:  stfld      int32 MainWindow/'<FetchWithAwaitButton_Click>d__5'::'<>1__state'
+  IL_002d:  ldloc.0
+  IL_002e:  ldflda     valuetype AsyncVoidMethodBuilder MainWindow/'<FetchWithAwaitButton_Click>d__5'::'<>t__builder'
+  IL_0033:  ldloca.s   V_0
+  IL_0035:  call       instance void AsyncVoidMethodBuilder::Start<MainWindow/'<FetchWithAwaitButton_Click>d__5'>(!!0&)
+  IL_003a:  ret
+} // end of method MainWindow::FetchWithAwaitButton_Click
