@@ -1,6 +1,9 @@
 # 2-Day Virtual Seminar: Asynchronous and Parallel Programming in C#
 *Level: Intermediate*
 
+More information and registration link:  
+[Asynchronous and Parallel Programming in C#](https://vslive.com/events/training-seminars/2025/june24/home.aspx)
+
 Asynchronous programming is a critical skill in C#, especially since so many of the built-in libraries are asynchronous -- including interactions with services and databases. On the server, asynchronous code can keep our servers free to handle more requests. In the desktop and mobile worlds, asynchronous code can keep the UI responsive. A subset of asynchronous programming is parallel programming. With parallel programming, you can run multiple operations at the same time -- speeding up processes and using resources more effectively. The ultimate goal is to give the best experience to your users.  
 
 But there are also pitfalls. If you do not handle asynchronous code correctly, you can create blocking operations that result in deadlocks, causing an application to hang indefinitely. You can also lose visibility to errors or cause performance issues. These are all things best avoided.  
