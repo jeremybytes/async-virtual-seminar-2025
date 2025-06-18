@@ -31,18 +31,19 @@ public class FibonacciSequence : IEnumerable<int>
 
 public class AsyncFibonacciSequence : IAsyncEnumerable<int>
 {
-    public async IAsyncEnumerator<int> GetAsyncEnumerator(CancellationToken cancellationToken = default)
+    public async IAsyncEnumerator<int> GetAsyncEnumerator(
+        CancellationToken cancellationToken = default)
     {
         var value = (current: 0, next: 1);
 
         while (true)
         {
-            value = await NextFibonacciAsync(value);
+            value = await NextFibonacci(value);
             yield return value.current;
         }
     }
 
-    private static Task<(int, int)> NextFibonacciAsync((int current, int next) value)
+    private static Task<(int, int)> NextFibonacci((int current, int next) value)
     {
         checked
         {

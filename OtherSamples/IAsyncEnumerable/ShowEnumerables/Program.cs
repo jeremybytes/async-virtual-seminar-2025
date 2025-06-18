@@ -25,11 +25,13 @@ internal class Program
         try
         {
             Console.WriteLine("IAsyncEnumerable<int>");
+            
             AsyncFibonacciSequence asyncFibs = new();
             await foreach (int fib in asyncFibs)
             {
                 Console.WriteLine(fib);
             }
+            
             Console.WriteLine("IAsyncEnumerable<int> Done");
         }
         catch (OverflowException)

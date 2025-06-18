@@ -11,7 +11,7 @@
   IL_0008:  ldarg.0
   IL_0009:  ldfld      ListBox MainWindow::PersonListBox
   IL_000e:  ldloc.0
-  IL_000f:  callvirt   instance void ItemsControl::set_ItemsSource(class IEnumerable)
+  IL_000f:  callvirt   instance void ItemsControl::set_ItemsSource(IEnumerable)
   IL_0014:  nop
   IL_0015:  ret
 } // end of method MainWindow::PopulateListBox
