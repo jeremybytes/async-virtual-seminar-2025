@@ -97,7 +97,7 @@ public class PersonReader
             cancelToken.ThrowIfCancellationRequested();
 
             int id = ids[i];
-            var person = await Task.Run(() => GetPerson(id)).ConfigureAwait(false);
+            var person = await GetPersonAsync(id).ConfigureAwait(false);
 
             // TODO: Calculate Progress
 
@@ -120,7 +120,7 @@ public class PersonReader
             cancelToken.ThrowIfCancellationRequested();
 
             int id = ids[i];
-            var person = await Task.Run(() => GetPerson(id)).ConfigureAwait(false);
+            var person = await GetPersonAsync(id).ConfigureAwait(false);
 
             // TODO: Calculate Progress
 
