@@ -8,7 +8,7 @@ public class ParallelTaskRecognizerControl : RecognizerControl
         base($"{controlTitle} (Parallel Task)", displayMultiplier)
     { }
 
-    protected override Task Run(DigitImage[] rawData, Classifier classifier)
+    protected override async Task Run(DigitImage[] rawData, Classifier classifier)
     {
         var allTasks = new List<Task>();
         foreach (var imageData in rawData)
@@ -23,6 +23,6 @@ public class ParallelTaskRecognizerControl : RecognizerControl
             );
             allTasks.Add(continuation);
         }
-        return Task.WhenAll(allTasks);
+        await Task.WhenAll(allTasks);
     }
 }

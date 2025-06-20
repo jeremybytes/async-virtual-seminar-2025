@@ -7,7 +7,7 @@ public class ParallelAwaitRecognizerControl : RecognizerControl
     public ParallelAwaitRecognizerControl(string controlTitle, double displayMultiplier) :
         base($"{controlTitle} (Parallel await)", displayMultiplier) { }
 
-    protected override Task Run(DigitImage[] rawData, Classifier classifier)
+    protected override async Task Run(DigitImage[] rawData, Classifier classifier)
     {
         var allTasks = new List<Task>();
 
@@ -15,7 +15,7 @@ public class ParallelAwaitRecognizerControl : RecognizerControl
         {
             allTasks.Add(ProcessRecord(imageData, classifier));
         }
-        return Task.WhenAll(allTasks);
+        await Task.WhenAll(allTasks);
     }
 
     private async Task ProcessRecord(DigitImage imageData, Classifier classifier)

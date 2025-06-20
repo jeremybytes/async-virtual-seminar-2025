@@ -17,11 +17,11 @@ public class ParallelTaskConstrainedRecognizerControl : RecognizerControl
             await semaphore.WaitAsync();
             var task = classifier.Predict(imageData);
             var continuation = task.ContinueWith(t =>
-                {
-                    var result = t.Result;
-                    CreateUIElements(result, DigitsBox);
-                    semaphore.Release();
-                },
+            {
+                var result = t.Result;
+                CreateUIElements(result, DigitsBox);
+                semaphore.Release();
+            },
                 TaskScheduler.FromCurrentSynchronizationContext()
             );
             allTasks.Add(continuation);
