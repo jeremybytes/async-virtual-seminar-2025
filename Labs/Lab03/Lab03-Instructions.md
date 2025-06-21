@@ -2,7 +2,7 @@
 
 ## Objectives
 
-This lab uses a machine-learning application that recognizes hand-written digits (0 through 9). The current application shows the number of digits processed and outputs the number that were recognized incorrectly. The process takes several seconds to several minutes to complete (depending on the number of items processed). The objective of this lab is to use progress reporting to add a progress bar as well as a visualizer to show the currently processed item.  
+This lab uses a machine-learning application that recognizes hand-written digits (0 through 9). The current application shows the number of digits processed and outputs the number that were recognized incorrectly. The process takes several seconds to several minutes to complete (depending on the number of items processed). The objective of this lab is to use progress reporting to add a progress bar as well as a visualizer to show the last item processed.  
 
 *Note: The algorthms used here are very naive (i.e. not very complex). They use a "closest match" methodology. It is error prone; however, it still achieves 93%-96% accuracy.*  
 
@@ -78,7 +78,7 @@ Press [Enter] to show errors...
 
 ![Sample Error Output](./LabImages/Error-output.png)
 
-If the output does not look right in your console, you can use [Ctrl]+[-] to make the font smaller until things line up.
+> If the output does not look right in your console, you can use Ctrl- to make the font smaller until things line up (Ctrl+ will make the font bigger).
 
 On the left, this sample shows the input value (which is a "7"). On the left is the closest match that the algorithm found ("9"). The algorithms used in this application are very naive. It is pretty impressive that they get 95% accuracy here.
 
@@ -124,7 +124,7 @@ public static class DigitRecognizer
 ```
 
 The ```Run``` method has 3 parameters.  
-* ```classifier``` is the algorithm (we will use the same algorithm through this lab).  
+* ```classifier``` is the algorithm (we will use the same algorithm throughout this lab).  
 * ```validation``` is the incoming data, i.e., the items we want to recognize.
 * ```errorLog``` is a collection to hold the errors.  
 * The ```Prediction``` type of the error log has data for both the incoming data and the "closest match" that was found.  

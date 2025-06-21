@@ -240,7 +240,7 @@ try
 
 * The "foreach" loop goes through each of the IDs.
 
-* Inside the loop, "GetPersonAsync" gets an single Person record based on the ID. Since this code is awaited, it will take at least 1 second for each iteration of the loop.
+* Inside the loop, "GetPersonAsync" gets an single Person record based on the ID. Since this code is awaited, it will take at least .5 seconds for each iteration of the loop.
 
 * After the "Person" record is returned, it is added to the "people" list.  
 
@@ -665,7 +665,7 @@ await Parallel.ForEachAsync(
     });
 ```
 
-Now it only takes 1 second to complete.  
+Now it only takes less than 1 second to complete.  
 
 > **Note on I/O-bound Operations**: This application has an "I/O-bound" operation that we run in parallel. An I/O-bound operation is one that waits for an input/output operation such as accessing a file, getting data from a database, or calling a service. Because of this, the number of concurrent operations is not dependent on the number of cores on our computer. However, in the real world, we want to be careful about the number of concurrent web calls that we run at the same time. Our example here is a bit contrived so that we can try out these different things.  
 
@@ -695,9 +695,9 @@ All 3 of these options will open a desktop application with multiple buttons on 
 
 * "Fetch w/ await (Non-Parallel)" takes about 8 seconds to complete. You will see the items show up one at a time in the list box.  
 
-* "Fetch w/ Task (Parallel)" takes 1 second to complete. All items show at the same time.  
+* "Fetch w/ Task (Parallel)" takes less than 1 second to complete. All items show at the same time.  
 
-* "Fetch w/ Channel (Parallel)" takes 1 second to complete. All items show at the same time.  
+* "Fetch w/ Channel (Parallel)" takes less than 1 second to complete. All items show at the same time.  
 
 * "Fetch w/ ForEachAsync (Parallel)" throws an invalid operation exception. (This is what we are here to fix).
 
@@ -742,8 +742,6 @@ await Parallel.ForEachAsync(
         Dispatcher.Invoke(() => PersonListBox.Items.Add(person));
     });
 ```
-
-> Note: You may need to add `using System.Windows.Threading;` to get the Dispatcher object to resolve.
 
 We have wrapped the place where we use the list box in a delegate (a lambda expression).
 
@@ -804,15 +802,9 @@ As another bonus, we will look at an issue that we need to be concerned with if 
 
 Just like the web application, this console application gets its data from the service. Follow the instructions at the top of the lab if the service is not already running.
 
-2. Run the console application.
+2. Open the "Program.cs" file.  
 
-**In Visual Studio 2022:** Set the "Parallel.Basic" application to the startup project. Press "F5" or use the "Debug" menu to start debugging.  
-**In Visual Studio Code:** Set the "Parallel.Basic" application to debug. If you have not done this before, then I would recommend starting the application from the command line.  
-**Command Line:** Similar to starting the service, open your command line tool to the "Parallel.Basic" folder and type "dotnet run" to start the application.
-
-3. Open the "Program.cs" file.  
-
-4. In the "Main" method, make sure that "Option 2" is uncommented (and the other options are commented out).
+3. In the "Main" method, make sure that "Option 2" is uncommented (and the other options are commented out).
 
 ```csharp
 // Option 1 = Run Sequentially
@@ -828,7 +820,13 @@ await RunWithContinuation(ids);
 //await RunWithForEachAsync(ids);
 ```
 
-5. Run the application. The output should be similar to the following:  
+4. Run the application.  
+
+**In Visual Studio 2022:** Set the "Parallel.Basic" application to the startup project. Press "F5" or use the "Debug" menu to start debugging.  
+**In Visual Studio Code:** Set the "Parallel.Basic" application to debug. If you have not done this before, then I would recommend starting the application from the command line.  
+**Command Line:** Similar to starting the service, open your command line tool to the "Parallel.Basic" folder and type "dotnet run" to start the application.  
+
+The output should be similar to the following:  
 
 ```
 [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
@@ -892,7 +890,7 @@ Rating: *******
 Total time: 00:00:01.0167689
 ```
 
-6. The "RunWithContinuation" method currently has a "lock" statement.
+5. The "RunWithContinuation" method currently has a "lock" statement.
 
 ```csharp
 static async Task RunWithContinuation(List<int> ids)
@@ -920,7 +918,7 @@ static async Task RunWithContinuation(List<int> ids)
 
 The "lock" around "DisplayPerson" makes sure that the method cannot be called more than once at the same time (for example, multiple threads calling "DisplayPerson" at the same time).  
 
-7. Remove the "lock" block from around "DisplayPerson".
+6. Remove the "lock" block from around "DisplayPerson".
 
 ```csharp
 static async Task RunWithContinuation(List<int> ids)
@@ -942,7 +940,7 @@ static async Task RunWithContinuation(List<int> ids)
 }
 ```
 
-8. Re-run the application. The output will be similar to the following:  
+7. Re-run the application. The output will be similar to the following:  
 
 ```
 [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
@@ -1026,7 +1024,7 @@ One way to solve the problem is to add a "lock" around the calls so that this me
 
 Another solution is to make the "DisplayPerson" call thread-safe. One way of doing this is to compose a single string and only make one "Console.WriteLine" call.  
 
-9. Create a single string with all 4 lines by using a StringBuilder.  
+8. Create a single string with all 4 lines by using a StringBuilder.  
 
 ```csharp
 static void DisplayPerson(Person person)
@@ -1041,9 +1039,11 @@ static void DisplayPerson(Person person)
 }
 ```
 
+> Note: ```.ToString()``` is optional here, but it can help with readability.  
+
 This appends multiple lines of text together into a StringBuilder. Then a single call to WriteLine outputs the final string.  
 
-10. Re-build and re-run the application. The output should be similar to the following:  
+9. Re-build and re-run the application. The output should be similar to the following:  
 
 ```
 [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
@@ -1109,7 +1109,7 @@ Total time: 00:00:01.0878465
 
 Since there is only a single "WriteLine" call, the "DisplayPerson" method can safely be called multiple times and still have the text come out as expected.  
 
-11. As a last step, remove the "lock" statement from the "RunWithForEachAsync" method. This method will also run correctly without needing a lock.
+10. As a last step, remove the "lock" statement from the "RunWithForEachAsync" method. This method will also run correctly without needing a lock.
 
 ```csharp
 static async Task RunWithForEachAsync(List<int> ids)

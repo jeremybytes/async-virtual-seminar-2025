@@ -13,7 +13,7 @@ The "Starter" folder contains the code files for this lab.
 
 *Note: The lab also contains a "Completed" folder with the finished solution. If you get stuck along the way or have issues with debugging, take a look at the code in the "Completed" folder for guidance.*
 
-This solution is a console application that processes data from a text file. The "DataLoader" class creates a list of strings from the contents of the file ("data.txt"). These strings are passed to the "DataParser" class. The DataParser is responsible for parsing the strings into Person objects (which are then displayed to the console). Errors are logged to a file using the "FileLogger" class.
+This solution is a console application that processes data from a text file. The "DataLoader" class creates a list of strings from the contents of the file "data.txt". These strings are passed to the "DataParser" class. The DataParser is responsible for parsing the strings into Person objects (which are then displayed to the console). Errors are logged to a file using the "FileLogger" class.
 
 Run the application by pressing F5 (in either Visual Studio Code or Visual Studio 2022). This will build the application and give us some output that we can ignore for now.
 
@@ -169,7 +169,7 @@ public Task LogMessage(string message, string data)
 ```
 
 > **Caution**  
-Even though this compiles, it may not work as expected. This is because of the "using" statement on the StreamWriter class. By using this code, the StreamWriter may get disposed before the "WriteLineAsync" method is called. This results in a runtime exception. The exact behavior depends on the specific version of the compiler.
+Even though this compiles, it may not work as expected. This is because of the "using" statement on the StreamWriter class. By using this code, the StreamWriter may get disposed before the "WriteLineAsync" method is called. This results in a runtime exception.  
 
 Rather than returning the task directly, await it. (Don't forget to add the "async" modifier to the method.)
 
