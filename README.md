@@ -65,7 +65,6 @@ Samples have been tested with Visual Studio 2022 and Visual Studio Code.
 
 All samples require the "Person.Service" web service be running. To start the service, navigate to the "Person.Service" folder from the command line and type "dotnet run".
 
-Ex:
 ```
 C:\async-virtual-seminar\People.Service> dotnet run
 ```  
@@ -118,10 +117,10 @@ Relevant file: **Controllers/PeopleController.cs**
 **Progress Reporting**  
 The Progress Reporting samples show how to report progress from an asynchronous method - in this case, as a percentage complete and optional message. These also get results, handle exceptions, and support cancellation.
 * *ProgressReport.UI.Console*  
-A console application that reports percentage complete progress through text. Ex: "21% Complete". (Windows, macOS, Linux)  
+A console application that reports percentage complete progress through text. Ex: "21% Complete" (Windows, macOS, Linux).  
 Relevant file: **Program.cs**
 * *Parallel.UI.Desktop*  
-A WPF desktop application that  reports percentage complete progress through a graphical progress bar. (Windows only)  
+A WPF desktop application that  reports percentage complete progress through a graphical progress bar (Windows only).  
 Relevant file: **MainWindow.xaml.cs**  
 * *TaskAwait.Library*  
 This shared library contains a method that supports progress reporting.  
@@ -140,12 +139,12 @@ public async IAsyncEnumerable<List<Person>> GetPeopleAsyncEnumerable(IProgress<i
 **Breaking Async**  
 The Breaking Async samples show how to call asynchronous code from methods that cannot be asynchronous themselves (recommendation is to use JoinableTaskFactory). There is also a static factory method example as an option when you need to run async code inside an object constructor.  
 * *NoAsync.UI.Desktop*  
-A WPF application that shows when the library options are blocking and deadlocking. (Windows)  
+A WPF application that shows when the library options are blocking and deadlocking (Windows).  
 Relevant file: **MainWindow.xaml.cs**  
 * *NoAsync.Library*  
 A library with code that needs to bread async.  
 Relevant file: **APIReader.cs** - call async from inside a non-async method.  
-Relevant file: **AsyncConstructorReader.cs** - static factory method example.
+Relevant file: **AsyncConstructorReader.cs** - static factory method for async creation.
 
 
 Hands-On Labs  
@@ -162,9 +161,9 @@ The "Labs" folder contains hands-on labs. The labs are integrated throughout the
 
 Each lab consists of the following:
 
-* **Labxx-Instructions** (Markdown)  
-A markdown file containing the lab instructions. This includes the scenario, a set of goals, and step-by-step instructions.  
-This can be viewed on GitHub or in Visual Studio Code (just click the "Open Preview to the Side" button in the upper right corner).
+* **Labxx-Instructions** (Markdown / PDF)  
+A markdown file containing the lab instructions. This includes the scenario, a set of goals, and step-by-step instructions. This can be viewed on GitHub or in Visual Studio Code (just click the "Open Preview to the Side" button in the upper right corner).  
+*Note: A PDF version is also available.*  
 
 * **Starter** (Folder)  
 This folder contains the starting code for the lab.
@@ -183,11 +182,11 @@ Additional Resources
 * [Producer/Consumer Exception Handling - A More Reliable Approach](https://jeremybytes.blogspot.com/2023/10/producerconsumer-exception-handling.html)  
 * ["await.WhenAll" Shows 1 Exception - Here's How to See Them All](https://jeremybytes.blogspot.com/2020/09/await-taskwhenall-shows-one-exception.html)
 
-**Video Series & Articles (by Jeremy)**  
+**Articles & Videos (by Jeremy)**  
 Each of these has a lot of supporting links:  
 * [I'll Get Back to You: Task, Await, and Asynchronous Programming in C#](http://www.jeremybytes.com/Demos.aspx#TaskAndAwait) (Includes progress reporting)  
 * [Run Faster: Parallel Programming in C#](http://www.jeremybytes.com/Demos.aspx#ParallelProgramming)  
-* [Learn to Love Lambdas in C# (and LINQ, ToO!)](http://www.jeremybytes.com/Demos.aspx#LLL)  
+* [Learn to Love Lambdas in C# (and LINQ, Too!)](http://www.jeremybytes.com/Demos.aspx#LLL)  
 * [Get Func-y: Delegates in .NET](http://www.jeremybytes.com/Demos.aspx#GF)  
 
 **BackgroundWorker Component**  
@@ -205,13 +204,13 @@ Stephen Cleary has lots of great articles, books, and practical advice.
 * .NET 8 - [ConfigureAwait in .NET 8](https://blog.stephencleary.com/2023/11/configureawait-in-net-8.html) - Stephen Cleary
 * [Don't Block on Async Code](https://blog.stephencleary.com/2012/07/dont-block-on-async-code.html) - Stephen Cleary
 * [Async/Await - Best Practices in Asynchronous Programming](https://docs.microsoft.com/en-us/archive/msdn-magazine/2013/march/async-await-best-practices-in-asynchronous-programming) - Stephen Cleary  
-* [ASP.NET Core SynchronizationContext](https://blog.stephencleary.com/2017/03/aspnetcore-synchronization-context.html) by Stephen Cleary  
-* [There Is No Thread](https://blog.stephencleary.com/2013/11/there-is-no-thread.html) by Stephen Cleary  
+* [ASP.NET Core SynchronizationContext](https://blog.stephencleary.com/2017/03/aspnetcore-synchronization-context.html) - Stephen Cleary  
+* [There Is No Thread](https://blog.stephencleary.com/2013/11/there-is-no-thread.html) - Stephen Cleary  
 
 Stephen Toub has great articles, too (generally with advanced insights).
 * [Do I Need to Dispose of Tasks?](https://devblogs.microsoft.com/pfxteam/do-i-need-to-dispose-of-tasks/) - Stephen Toub  
 * [Understanding the Whys, Whats, and Whens of ValueTask](https://devblogs.microsoft.com/dotnet/understanding-the-whys-whats-and-whens-of-valuetask/) - Stephen Toub  
-* [ConfigureAwait FAQ](https://devblogs.microsoft.com/dotnet/configureawait-faq/) by Stephen Toub  
+* [ConfigureAwait FAQ](https://devblogs.microsoft.com/dotnet/configureawait-faq/) - Stephen Toub  
 
 For more information, visit [jeremybytes.com](http://www.jeremybytes.com).  
 
