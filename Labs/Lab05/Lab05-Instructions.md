@@ -362,7 +362,7 @@ In a later section, we will eliminate the short-circuiting of the loop and captu
 
 > Note: the finished code for this section is part of the "Intermediate" solution.  
 
-1. Open the "ForEachAsyncExceptions/Program.cs" file.
+1. Open the "WhenAllExceptions/Program.cs" file.
 
 2. Review the ```RunProcess``` method.  
 
